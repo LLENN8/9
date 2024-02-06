@@ -8,7 +8,7 @@ class FileHandler:
     @staticmethod
     def select_files(listbox):
         files_selected = filedialog.askopenfilenames(
-            filetypes=[("Video Files", "*.mp4")],
+            filetypes=[("Video Files", "*")],
             title="Pilih File Video"
         )
         listbox.delete(0, tk.END)

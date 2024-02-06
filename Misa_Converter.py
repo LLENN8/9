@@ -1,4 +1,5 @@
 import tkinter as tk
+import os
 from tkinter import ttk
 from tkinter import filedialog, messagebox
 from file_handler import FileHandler
@@ -19,7 +20,19 @@ class TkinterApp:
         self.root.geometry("500x400")
         frame = tk.Frame(self.root)
         frame.pack(pady=10)
-        tk.Label(frame, text="Convert mp4 to mp3", font=("Arial", 12, "bold")).pack()
+        tk.Label(frame, text="Convert Video/Audio Files", font=("Arial", 12, "bold")).pack()
+
+        conversion_options = [
+            "MP4 to MP3",
+            "MP4 to MKV",
+            "MKV to MP4"
+        ]
+        self.selected_conversion = tk.StringVar()
+        self.selected_conversion.set(conversion_options[0])
+
+        option_menu = ttk.OptionMenu(frame, self.selected_conversion, *conversion_options)
+        option_menu.pack(pady=5)
+
         tk.Button(frame, text="Open File", command=lambda: FileHandler.select_files(self.listbox),
                   font=("Arial", 14)).pack(pady=5)
 
@@ -34,8 +47,7 @@ class TkinterApp:
 
         button_frame = tk.Frame(self.root)
         button_frame.pack(pady=10)
-        tk.Button(button_frame, text="Convert",
-                  command=lambda: FileHandler.convert_selected(self.listbox, self.progress_label, self.progress_bar, self.root),
+        tk.Button(button_frame, text="Convert", command=self.convert_selected_files,
                   font=("Arial", 14)).pack(
             side=tk.LEFT,
             padx=10)
@@ -44,15 +56,36 @@ class TkinterApp:
 
         self.progress_frame = tk.Frame(self.root)
         self.progress_frame.pack(pady=10)
-        TkinterApp.progress_bar = ttk.Progressbar(self.progress_frame, orient=tk.HORIZONTAL, length=300,
-                                                   mode='determinate')
-        TkinterApp.progress_bar.pack(pady=10)
-        TkinterApp.progress_bar.pack_forget()
+
         TkinterApp.progress_label = tk.Label(self.progress_frame, text="")
         TkinterApp.progress_label.pack()
+
+    def convert_selected_files(self):
+        selected_videos = TkinterApp.listbox.get(0, tk.END)
+        if not selected_videos:
+            messagebox.showerror("Error", "Pilih setidaknya satu file untuk dikonversi.")
+            return
+
+        output_folder_selected = os.path.join(os.path.expanduser("~/Videos"), "Misa Converter")
+        os.makedirs(output_folder_selected, exist_ok=True)
+
+        selected_conversion = self.selected_conversion.get()
+        if selected_conversion == "MP4 to MP3":
+            Converter.convert_mp4_to_mp3(selected_videos, output_folder_selected, TkinterApp.progress_label,
+                                          TkinterApp.progress_bar, self.root)
+        elif selected_conversion == "MP4 to MKV":
+            Converter.convert_mp4_to_mkv(selected_videos, output_folder_selected, TkinterApp.progress_label,
+                                          TkinterApp.progress_bar, self.root)
+        elif selected_conversion == "MKV to MP4":
+            Converter.convert_mkv_to_mp4(selected_videos, output_folder_selected, TkinterApp.progress_label,
+                                          TkinterApp.progress_bar, self.root)
+
+        messagebox.showinfo("Konversi Selesai", "Konversi selesai!")
+        TkinterApp.progress_label.pack_forget()
 
 
 if __name__ == "__main__":
     root = tk.Tk()
     app = TkinterApp(root)
     root.mainloop()
+

@@ -54,13 +54,7 @@ class Converter:
     @staticmethod
     def convert_mp4_to_mp3(mp4_files, output_folder, progress_label, progress_bar, root):
         total_files = len(mp4_files)
-        progress_step = 100 / total_files
-        progress_bar.pack()
-        progress_bar.start()
         for i, mp4_file in enumerate(mp4_files, start=1):
-            progress = i * progress_step
-            progress_bar['value'] = progress
-            root.update_idletasks()
             mp3_file = os.path.splitext(os.path.basename(mp4_file))[0] + ".mp3"
             mp3_path = os.path.join(output_folder, mp3_file)
             with VideoFileClip(mp4_file) as video:
@@ -68,5 +62,30 @@ class Converter:
                 audio.write_audiofile(mp3_path)
             progress_label.config(text=f"Konversi: {i}/{total_files}")
             root.update()
-        progress_bar.stop()
-        progress_bar.pack_forget()
+        
+
+    @staticmethod
+    def convert_mp4_to_mkv(mp4_files, output_folder, progress_label, progress_bar, root):
+        total_files = len(mp4_files)
+        for i, mp4_file in enumerate(mp4_files, start=1):
+            mkv_file = os.path.splitext(os.path.basename(mp4_file))[0] + ".mkv"
+            mkv_path = os.path.join(output_folder, mkv_file)
+            video = VideoFileClip(mp4_file)
+            #change the bitrate for better quality
+            video.write_videofile(mkv_path, codec="libx264", bitrate="40000k")
+            progress_label.config(text=f"Konversi: {i}/{total_files}")
+            root.update()
+
+    @staticmethod
+    def convert_mkv_to_mp4(mkv_files, output_folder, progress_label, progress_bar, root):
+        total_files = len(mkv_files)
+        for i, mkv_file in enumerate(mkv_files, start=1):
+            mp4_file = os.path.splitext(os.path.basename(mkv_file))[0] + ".mp4"
+            mp4_path = os.path.join(output_folder, mp4_file)
+            video = VideoFileClip(mkv_file)
+            #change the bitrate for better quality
+            video.write_videofile(mp4_path, codec="libx264", bitrate="40000k")
+            video.write_videofile(mp4_path)
+            progress_label.config(text=f"Konversi: {i}/{total_files}")
+            root.update()
+ 
