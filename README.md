@@ -57,7 +57,7 @@ Misa Converter adalah program media converter dengan kualitas seadanya menggunak
 
 ## Lisensi
 
-Program ini dilisensikan di bawah [MIT License](https://opensource.org/licenses/MIT).
+Program ini dilisensikan di bawah [MIT License](LICENSE.md).
 
 
 
