@@ -3,7 +3,6 @@ import tkinter as tk
 from tkinter import filedialog, messagebox
 from converter import Converter
 
-
 class FileHandler:
     @staticmethod
     def select_files(listbox):
@@ -20,3 +19,4 @@ class FileHandler:
         output_folder = os.path.join(os.path.expanduser("~/Videos"), "Misa Converter")
         os.makedirs(output_folder, exist_ok=True)
         os.startfile(output_folder)
+
