@@ -47,8 +47,8 @@ Misa Converter adalah program media converter dengan kualitas seadanya menggunak
 📝 **Catatan**: Misa Converter hanya diuji pada Windows 10 dan 11. Kemungkinan tidak kompatibel dengan sistem operasi lainnya.
 
 ## Penggunaan
-
-1. Buka program
+![Misa Converter](Screenshot.png)
+1. Jalankan program
 2. Klik tombol "Open File" untuk memilih file video mp4 yang ingin Anda konversi ke mp3.
 3. Setelah memilih file video, klik tombol "Convert" untuk memulai konversi.
 4. Setelah konversi selesai, Anda dapat membuka folder tempat hasil konversi disimpan dengan mengklik tombol "Buka Folder Hasil".
