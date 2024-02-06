@@ -52,7 +52,7 @@ from moviepy.audio.fx.volumex import volumex
 
 class Converter:
     @staticmethod
-    def convert_mp4_to_mp3(mp4_files, output_folder, progress_label, progress_bar, root):
+    def convert_mp4_to_mp3(mp4_files, output_folder, progress_label, root):
         total_files = len(mp4_files)
         for i, mp4_file in enumerate(mp4_files, start=1):
             mp3_file = os.path.splitext(os.path.basename(mp4_file))[0] + ".mp3"
@@ -65,7 +65,7 @@ class Converter:
         
 
     @staticmethod
-    def convert_mp4_to_mkv(mp4_files, output_folder, progress_label, progress_bar, root):
+    def convert_mp4_to_mkv(mp4_files, output_folder, progress_label, root):
         total_files = len(mp4_files)
         for i, mp4_file in enumerate(mp4_files, start=1):
             mkv_file = os.path.splitext(os.path.basename(mp4_file))[0] + ".mkv"
@@ -77,15 +77,14 @@ class Converter:
             root.update()
 
     @staticmethod
-    def convert_mkv_to_mp4(mkv_files, output_folder, progress_label, progress_bar, root):
+    def convert_mkv_to_mp4(mkv_files, output_folder, progress_label, root):
         total_files = len(mkv_files)
-        for i, mkv_file in enumerate(mkv_files, start=1):
-            mp4_file = os.path.splitext(os.path.basename(mkv_file))[0] + ".mp4"
+        for i, mkv_files in enumerate(mkv_files, start=1):
+            mp4_file = os.path.splitext(os.path.basename(mkv_files))[0] + ".mp4"
             mp4_path = os.path.join(output_folder, mp4_file)
-            video = VideoFileClip(mkv_file)
+            video = VideoFileClip(mkv_files)
             #change the bitrate for better quality
             video.write_videofile(mp4_path, codec="libx264", bitrate="40000k")
-            video.write_videofile(mp4_path)
             progress_label.config(text=f"Konversi: {i}/{total_files}")
             root.update()
  
