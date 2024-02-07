@@ -11,6 +11,14 @@ class Converter:
                 output_extension = ".mp3"
                 output_path = os.path.join(output_folder, output_file + output_extension)
                 ffmpeg.input(input_file).output(output_path, format='mp3', codec='copy').run()
+            elif selected_conversion == "MKV to MP3":
+                output_extension = ".mp3"
+                output_path = os.path.join(output_folder, output_file + output_extension)
+                ffmpeg.input(input_file).output(output_path, format='mp3', codec='copy').run()
+            elif selected_conversion == "AVI to MP3":
+                output_extension = ".mp3"
+                output_path = os.path.join(output_folder, output_file + output_extension)
+                ffmpeg.input(input_file).output(output_path, format='mp3', codec='copy').run()
             elif selected_conversion == "MP4 to MKV":
                 output_extension = ".mkv"
                 output_path = os.path.join(output_folder, output_file + output_extension)

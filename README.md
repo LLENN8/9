@@ -1,14 +1,20 @@
 # Misa Converter
 <img src="Screenshot.png" width="400">
 
-Misa Converter adalah program media converter dengan kualitas seadanya menggunakan python.
+Misa Converter adalah program media converter menggunakan FFmpeg dan python.
 
-> Ayahku terlalu tua untuk menggunakan aplikasi converter diluaran dengan penggunaanya yang kompleks. aku cukup frustasi mencari aplikasi converter yang cocok untuknya. Setelah mencoba beberapa aplikasi converter dan ia menolak, aku memutuskan membuat sendiri dengan tampilan dan alur penggunaan yang mudah. Approved by my Father.
+> Ayahku sudah tua dan kesulitan menggunakan aplikasi converter dengan ui kompleks di luar sana, sehingga saya membuatkan program dengan interface yang mudah. Approved by my Father.
 
 ## Konversi Format yang di support
-* mp4 ke mp3
-* mp4 ke mkv
-* mkv ke mp4
+* MP4 ke MP3
+* MKV ke MP3
+* AVI ke MP3
+* MP4 ke MKV
+* MP4 ke AVI
+* MKV ke MP4
+* MKV ke AVI
+* AVI ke MP4
+* AVI ke MKV
 
 📝 [Catatan]: Jika ayahku meminta format lain, aku akan mempertimbangkan menambahkan konversi format lain
 
@@ -43,9 +49,12 @@ Misa Converter adalah program media converter dengan kualitas seadanya menggunak
     ```bash
     python setup.py build
     ```
-
+    
 4. **Menjalankan Program:**
     Jalankan file Misa_Converter.exe yang ada di folder `..\build\exe.win-amd64-3.11`
+
+
+⚠️ **Peringatan**: Misa Converter menggunakan FFmpeg. Pastikan FFmpeg sudah terinstall pada sistem. Untuk instalasi FFmpeg dapat didownload [disini](https://www.ffmpeg.org/download.html)
 
 📝 **Catatan**: Misa Converter hanya diuji pada Windows 10 dan 11. Kemungkinan tidak kompatibel dengan sistem operasi lainnya.
 

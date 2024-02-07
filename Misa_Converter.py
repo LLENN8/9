@@ -18,11 +18,13 @@ class TkinterApp:
 
         conversion_options = [
             "MP4 to MP3",
+            "MKV to MP3",
+            "AVI to MP3",
             "MP4 to MKV",
-            "MKV to MP4",
-            "AVI to MP4",
             "MP4 to AVI",
+            "MKV to MP4",
             "MKV to AVI",
+            "AVI to MP4",
             "AVI to MKV"
         ]
         self.selected_conversion = tk.StringVar()
