@@ -12,13 +12,18 @@ class TkinterApp:
     def setup_ui(self):
         self.root.title("Misa Converter")
         self.root.geometry("600x600")
+
         frame = tk.Frame(self.root)
         frame.pack(pady=10)
 
         conversion_options = [
             "MP4 to MP3",
             "MP4 to MKV",
-            "MKV to MP4"
+            "MKV to MP4",
+            "AVI to MP4",
+            "MP4 to AVI",
+            "MKV to AVI",
+            "AVI to MKV"
         ]
         self.selected_conversion = tk.StringVar()
 
@@ -68,18 +73,12 @@ class TkinterApp:
         output_folder_selected = os.path.join(os.path.expanduser("~/Videos"), "Misa Converter")
         os.makedirs(output_folder_selected, exist_ok=True)
 
-        if selected_conversion == "MP4 to MP3" or selected_conversion == "MP4 to MKV":
-            Converter.convert_mp4_to_format(files, output_folder_selected, selected_conversion, self.progress_label, self.root)
-        elif selected_conversion == "MKV to MP4":
-            Converter.convert_format_to_mp4(files, output_folder_selected, self.progress_label, self.root)
+        Converter.convert_files(files, output_folder_selected, selected_conversion, self.progress_label, self.root)
 
         messagebox.showinfo("Konversi Selesai", "Konversi selesai!")
         self.progress_label.pack_forget()
-
 
 if __name__ == "__main__":
     root = tk.Tk()
     app = TkinterApp(root)
     root.mainloop()
-
-

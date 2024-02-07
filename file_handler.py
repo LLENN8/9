@@ -20,3 +20,4 @@ class FileHandler:
         os.makedirs(output_folder, exist_ok=True)
         os.startfile(output_folder)
 
+
