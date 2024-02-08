@@ -1,7 +1,6 @@
 import os
 import tkinter as tk
-from tkinter import filedialog, messagebox
-from converter import Converter
+from tkinter import filedialog
 
 class FileHandler:
     @staticmethod

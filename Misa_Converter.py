@@ -1,6 +1,6 @@
 import tkinter as tk
 import os
-from tkinter import ttk, filedialog, messagebox
+from tkinter import ttk, messagebox
 from file_handler import FileHandler
 from converter import Converter
 
@@ -29,15 +29,18 @@ class TkinterApp:
         ]
         self.selected_conversion = tk.StringVar()
 
+        #menu untuk memilih jenis conversi
         option_menu = ttk.OptionMenu(frame, self.selected_conversion, conversion_options[0], *conversion_options)
         option_menu.pack(pady=5)
         self.selected_conversion.set("Pilih Konversi...")
         menu = option_menu["menu"]
         menu.config(font=("Arial", 12, "bold"))
 
+        #Button untuk open folder
         tk.Button(frame, text="Open File", command=lambda: FileHandler.select_files(self.listbox),
                   font=("Arial", 14)).pack(pady=5)
 
+        #list file box
         listbox_frame = tk.Frame(self.root)
         listbox_frame.pack(pady=10)
         self.listbox = tk.Listbox(listbox_frame, selectmode=tk.MULTIPLE, width=95, height=20)
@@ -47,16 +50,20 @@ class TkinterApp:
         scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
         self.listbox.config(yscrollcommand=scrollbar.set)
 
+        #tombol convert
         button_frame = tk.Frame(self.root)
         button_frame.pack(pady=10)
         tk.Button(button_frame, text="Convert", command=self.convert_selected_files,
                   font=("Arial", 14)).pack(side=tk.LEFT, padx=10)
+        
+        #tombol buka folder hasil
         tk.Button(button_frame, text="Buka Folder Hasil", command=FileHandler.open_output_folder,
                   font=("Arial", 14)).pack(side=tk.LEFT, padx=10)
 
         self.progress_frame = tk.Frame(self.root)
         self.progress_frame.pack(pady=10)
 
+        #label konversi progress
         self.progress_label = tk.Label(self.progress_frame, text="")
         self.progress_label.pack()
 
