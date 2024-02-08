@@ -67,6 +67,13 @@ class TkinterApp:
         self.progress_label = tk.Label(self.progress_frame, text="")
         self.progress_label.pack()
 
+        # progress bar
+        self.progress_bar = ttk.Progressbar(self.progress_frame, orient=tk.HORIZONTAL, length=400, mode='determinate')
+        
+        # Label persentase
+        self.progress_percent_label = tk.Label(self.progress_frame, text="")
+
+
     def convert_selected_files(self):
         self.progress_label.pack()
         selected_conversion = self.selected_conversion.get()
@@ -82,10 +89,19 @@ class TkinterApp:
         output_folder_selected = os.path.join(os.path.expanduser("~/Videos"), "Misa Converter")
         os.makedirs(output_folder_selected, exist_ok=True)
 
-        Converter.convert_files(files, output_folder_selected, selected_conversion, self.progress_label, self.root)
+        # Set nilai maksimum progress bar
+        self.progress_bar["maximum"] = len(files)
+
+        # Reset progress bar dan label persentase
+        self.progress_bar["value"] = 0
+        self.progress_percent_label.config(text="0%")
+
+        Converter.convert_files(files, output_folder_selected, selected_conversion, self.progress_bar, self.progress_percent_label, self.progress_label, self.root)
 
         messagebox.showinfo("Konversi Selesai", "Konversi selesai!")
         self.progress_label.pack_forget()
+        self.progress_bar.pack_forget()
+        self.progress_percent_label.pack_forget()
 
 if __name__ == "__main__":
     root = tk.Tk()

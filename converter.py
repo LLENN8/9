@@ -3,8 +3,13 @@ import ffmpeg
 
 class Converter:
     @staticmethod
-    def convert_files(files, output_folder, selected_conversion, progress_label, root):
+    def convert_files(files, output_folder, selected_conversion, progress_bar, progress_percent_label, progress_label, root):
         total_files = len(files)
+        progress_bar["maximum"] = total_files
+        progress_bar["value"] = 0
+
+        progress_percent_label.pack()
+        progress_bar.pack()
         for i, input_file in enumerate(files, start=1):
             output_file = os.path.splitext(os.path.basename(input_file))[0]
             if selected_conversion == "MP4 to MP3":
@@ -45,6 +50,10 @@ class Converter:
                 ffmpeg.input(input_file).output(output_path, vcodec='libx264', acodec='mp3', y='-y').run(capture_stdout=True, capture_stderr=True)
             
             if progress_label.winfo_exists():
+                progress_bar["value"] = i
+                percent_complete = int((i / total_files) * 100)
+                progress_percent_label.config(text=f"{percent_complete}%")
                 progress_label.config(text=f"Konversi: {i}/{total_files}")
                 root.update()
+        
 
