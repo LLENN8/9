@@ -1,9 +1,17 @@
 import sys
 from cx_Freeze import setup, Executable
 
+base = None
+if sys.platform == "win32":
+    base = "Win32GUI"
+
+executables = [
+    Executable("Misa_Converter.py", base=base)
+]
+
 setup(
-    name="Misa Converter",
+    name="MisaConverter",
     version="0.1",
-    description="Convert mp4 to mp3",
-    executables=[Executable("Misa_Converter.py",  target_name="Misa Converter.exe", base=None)]
+    description="Media Converter Program",
+    executables=executables
 )
