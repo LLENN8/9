@@ -70,12 +70,5 @@ Ayahku sudah tua dan kesulitan menggunakan aplikasi converter dengan ui kompleks
 
 📝 [Catatan]: Folder untuk hasil output yang sudah terkonversi berada pada folder Videos bawaan pada os Windows `C:\Users\...\Videos\Misa Converter`.
 
-## Lisensi
-
-Program ini dilisensikan di bawah [MIT License](LICENSE).
-
-
-
-
 
 
