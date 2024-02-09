@@ -68,7 +68,7 @@ Ayahku sudah tua dan kesulitan menggunakan aplikasi converter dengan ui kompleks
 3. Klik tombol "Convert" untuk memulai konversi
 4. Setelah konversi selesai, Anda dapat membuka folder tempat hasil konversi disimpan dengan mengklik tombol "Buka Folder Hasil".
 
-📝 [Catatan]: Folder untuk hasil output yang sudah terkonversi berada pada folder Videos bawaan pada os Windows `C:\Users\...\Videos\Misa Converter`.
+> 📝 [Catatan]: Folder untuk hasil output yang sudah terkonversi berada pada folder Videos bawaan pada os Windows `C:\Users\...\Videos\Misa Converter`.
 
 
 
