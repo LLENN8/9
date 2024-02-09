@@ -1,7 +1,7 @@
 # Misa Converter
 <img src="Screenshot.png" width="400">
 
-Misa Converter adalah program media converter menggunakan FFmpeg dan python.
+Misa Converter adalah simpel GUI untuk FFmpeg menggunakan python.
 
 Ayahku sudah tua dan kesulitan menggunakan aplikasi converter dengan ui kompleks di luar sana, sehingga saya membuatkan program dengan interface yang mudah. Approved by my Father.
 
